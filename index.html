@@ -16,7 +16,7 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Imagine-2-Drive: High-Fidelity World Modeling in CARLA for Autonomous Vehicles</title>
+  <title>Imagine-2-Drive: Leveraging High-Fidelity World Models via Multi-Modal Diffusion Policies</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -98,7 +98,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Imagine-2-Drive: High-Fidelity World Modeling in CARLA for Autonomous Vehicles</h1>
+          <h1 class="title is-1 publication-title">Imagine-2-Drive: Leveraging High-Fidelity World Models via Multi-Modal Diffusion Policies</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://anant-garg205.github.io/">Anant Garg</a><sup>1</sup>,</span>
@@ -118,16 +118,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://drive.google.com/file/d/1dYEh2VItCpv45ILI-hOjXenw9oU8unjI/view?usp=drive_link"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2411.10171"
+                <a href="https://arxiv.org/pdf/2411.10171"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -137,7 +128,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://youtu.be/56etmpWrnFg "
+                <a href="https://youtu.be/fbwm_pdS-Ss"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -179,15 +170,15 @@
 
   <div class="columns is-centered has-text-centered">
     <div class="column is-three-fifths">
-      <h2 class="title is-3">VISTA Future Frames Denoising Results</h2>
+      <h2 class="title is-3"><i>DiffDreamer</i> Future Frames Denoising Results</h2>
       
       <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
         <source src="./static/videos/vista_denoise.mp4"
                 type="video/mp4">
       </video>
       <p class="has-text-left">
-        Denoising of future frames predictions using VISTA. Frames are predicted according to the input trajectory
-        shown as color coded. Unlike single-step models, VISTA predicts future states simultaneously, eliminating compounding errors.
+        Denoising of future frames predictions using <i>DiffDreamer</i>. Frames are predicted according to the input trajectory
+        shown as color coded. Unlike single-step models, <i>DiffDreamer</i> predicts future states simultaneously, eliminating compounding errors.
       </p>
     </div>
   </div>
@@ -200,9 +191,9 @@
         <img id="teaser-image" src="./static/images/teaser.jpg" alt="Teaser Image" height="100%">
       </div>
       <p>
-        Using front camera RGB image as the sole input modality, Imagine-2-Drive provides a framework to combine VISTAPlan, VISTA
-        based World Model with DPA, a multi-modal diffusion based policy actor. Given a trajectory output by DPA, shown in Red and the
-        corresponding predicted future observations from VISTAPlan, the DDPO tries to find an optimal policy by maximizing the cumulative
+        Using front camera RGB image as the sole input modality, Imagine-2-Drive provides a framework to combine <i>DiffDreamer</i>, a video-diffusion
+        based World Model with <i>DPA</i>, a multi-modal diffusion based policy actor. Given a trajectory output by <i>DPA</i>, shown in Red and the
+        corresponding predicted future observations from <i>DiffDreamer</i>, the DDPO tries to find an optimal policy by maximizing the cumulative
         sum of rewards from future states. The proposed architecture is shown along with the gradient flow for joint end-to-end training.
       </p>
     </div>
@@ -217,30 +208,27 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            In autonomous driving with image based state
-            space, accurate prediction of future events and modeling diverse
-            behavioral modes are essential for safety and effective decision-
-            making. World model-based Reinforcement Learning (WMRL)
-            approaches offers a promising solution by simulating future
-            states from current state and actions. However, utility of world
-            models is often limited by typical RL policies being limited
-            to deterministic or single gaussian distribution. By failing to
-            capture the full spectrum of possible actions, reduces their
-            adaptability in complex, dynamic environments. In this work,
-            we introduce Imagine-2-Drive, a framework that consists of
-            two components, VISTAPlan, a high-fidelity world model for
-            accurate future prediction and Diffusion Policy Actor (DPA),
-            a diffusion based policy to model multi-modal behaviors for
-            trajectory prediction. We use VISTAPlan to simulate and eval-
-            uate trajectories from DPA and use Denoising Diffusion Policy
-            Optimization (DDPO) to train DPA to maximize the cumulative
-            sum of rewards over the trajectories. We analyze the benefits
-            of each component and the framework as a whole in CARLA
-            with standard driving metrics. As a consequence of our twin
-            novelties- VISTAPlan and DPA, we significantly outperform
-            the state of the art (SOTA) world models on standard driving
-            metrics by 15% and 20% on Route Completion and Success
-            Rate respectively.
+          World Model-based Reinforcement Learning
+          (WMRL) enables sample efficient policy learning by reducing
+          the need for online interactions which can potentially be
+          costly and unsafe, especially for autonomous driving. 
+          However, existing world models often suffer from low prediction
+          fidelity and compounding one-step errors, leading to policy
+          degradation over long horizons. Additionally, traditional RL
+          policies, often deterministic or single Gaussian-based, fail to
+          capture the multi-modal nature of decision-making in complex
+          driving scenarios. To address these challenges, we propose
+          Imagine-2-Drive, a novel WMRL framework that integrates a
+          high-fidelity world model with a multi-modal diffusion-based
+          policy actor. It consists of two key components: DiffDreamer,
+          a diffusion-based world model that generates future observations simultaneously, mitigating error accumulation, and DPA
+          (Diffusion Policy Actor), a diffusion-based policy that models
+          diverse and multi-modal trajectory distributions. By training
+          DPA within DiffDreamer, our method enables robust policy
+          learning with minimal online interactions. We evaluate our
+          method in CARLA using standard driving benchmarks and
+          demonstrate that it outperforms prior world model baselines,
+          improving Route Completion and Success Rate by 15% and 20% respectively.
           </p>
         </div>
       </div>
@@ -252,7 +240,8 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/56etmpWrnFg"
+          <!-- <iframe src="https://www.youtube.com/embed/56etmpWrnFg" -->
+          <iframe src="https://youtube.com/embed/fbwm_pdS-Ss"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
@@ -265,16 +254,16 @@
 
   <div class="columns is-centered has-text-centered">
     <div class="column is-two-fifths">
-      <h2 class="title is-3">VISTA Future Frames Prediction Results</h2>
+      <h2 class="title is-3"><i>DiffDreamer</i> Future Frames Prediction Results</h2>
       
       <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
         <source src="./static/videos/vista_prediction.mp4"
                 type="video/mp4">
       </video>
       <p class="has-text-left">
-        Future obervation predictions from the VISTAPlan World Model, conditioned on the
+        Future obervation predictions from the <i>DiffDreamer</i> World Model, conditioned on the
         input trajectory and current observations. Demonstrates the 
-        VISTAPlan’s ability to accurately predict future observations based on
+        <i>DiffDreamer's</i> ability to accurately predict future observations based on
         the provided context, highlighting its robust trajectory prediction capabilities.
       </p>
     </div>
@@ -332,14 +321,14 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{garg2024imagine2drivehighfidelityworldmodeling,
-        title={Imagine-2-Drive: High-Fidelity World Modeling in CARLA for Autonomous Vehicles}, 
+      <pre><code>@misc{garg2025imagine2driveleveraginghighfidelityworld,
+        title={Imagine-2-Drive: Leveraging High-Fidelity World Models via Multi-Modal Diffusion Policies}, 
         author={Anant Garg and K Madhava Krishna},
-        year={2024},
+        year={2025},
         eprint={2411.10171},
         archivePrefix={arXiv},
         primaryClass={cs.RO},
-        url={https://arxiv.org/abs/2411.10171},
+        url={https://arxiv.org/abs/2411.10171}
   }</code></pre>
     </div>
   </section>
