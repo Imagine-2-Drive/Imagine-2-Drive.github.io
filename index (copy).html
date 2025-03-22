@@ -189,9 +189,23 @@
       </p>
     </div>
   </div>
-</section>
 
-<hr>
+  <hr>
+
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="content">
+        <img id="teaser-image" src="./static/images/teaser.jpg" alt="Teaser Image" height="100%">
+      </div>
+      <p>
+        Using front camera RGB image as the sole input modality, Imagine-2-Drive provides a framework to combine <i>DiffDreamer</i>, a video-diffusion
+        based World Model with <i>DPA</i>, a multi-modal diffusion based policy actor. Given a trajectory output by <i>DPA</i>, shown in Red and the
+        corresponding predicted future observations from <i>DiffDreamer</i>, the DDPO tries to find an optimal policy by maximizing the cumulative
+        sum of rewards from future states. The proposed architecture is shown along with the gradient flow for joint end-to-end training.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -227,37 +241,6 @@
       </div>
     </div>
     <!--/ Abstract. -->
-    
-
-
-  <hr>
-
-  <div style="background-color: #f0f0f0; padding: 0px 0; width: 100%;">
-    <div class="container is-max-desktop" style="padding: 20px; border-radius: 10px; text-align: center;">
-      <div class="hero-body">
-        <div class="content">
-          <h2 class="title is-3"><i>Imagine-2-Drive</i> Architecture</h2>
-          <img id="teaser-image" src="./static/images/i2d_architecture_wo_df-Photoroom.png" alt="Teaser Image" width="100%">
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <i>Imagine-2-Drive</i> consists of a Diffusion Policy Actor <i>(DPA)</i> for trajectory prediction and
-    <i>DiffDreamer</i> as a World Model for future state and reward prediction. (a) illustrates the overall pipeline: given the
-    encoded state from the current and P past observations, <i>DPA</i> denoises a set of one-hot embeddings over <i>K</i> steps to generate <i>H</i>
-    future discrete actions, forming the final denoised trajectory. This trajectory is further enriched using Fourier Embeddings
-    and, along with past and current observations, is input to <i>DiffDreamer</i> to predict future <i>H</i> observations and rewards. (b) details
-    <i>DiffDreamer</i>, comprising two components: <i>SVD</i> for future observation prediction and an additional head for reward prediction.
-    In <i>SVD</i>, the first P noisy frames are replaced with past observations, while the current observation is repeated <i>(P + H)</i>
-    times and concatenated with past and noisy frames for better grounding with the initial conditions.
-          </p>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
 
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
